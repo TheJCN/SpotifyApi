@@ -1,10 +1,8 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
-import okhttp3.OkHttpClient;
 import top.jgroup.SpotifyAuthService;
 import top.jgroup.SpotifyClient;
 import top.jgroup.SpotifyPlayerService;
 import top.jgroup.models.TokenResponse;
-import top.jgroup.models.TrackInfo;
+import top.jgroup.models.SpotifyTrackInfo;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -58,7 +56,7 @@ public class Main {
                 System.out.println("Token refreshed");
             }
 
-            TrackInfo currentTrack = playerService.getCurrentTrack(tokenResponse.getAccessToken());
+            SpotifyTrackInfo currentTrack = playerService.getCurrentTrack(tokenResponse.getAccessToken());
 
             if (currentTrack != null) {
                 System.out.println("Now playing: " + currentTrack);

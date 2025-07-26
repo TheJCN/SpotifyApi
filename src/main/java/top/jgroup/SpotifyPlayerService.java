@@ -3,7 +3,7 @@ package top.jgroup;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
-import top.jgroup.models.TrackInfo;
+import top.jgroup.models.SpotifyTrackInfo;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class SpotifyPlayerService {
         this.objectMapper = objectMapper;
     }
 
-    public TrackInfo getCurrentTrack(String accessToken) throws IOException {
+    public SpotifyTrackInfo getCurrentTrack(String accessToken) throws IOException {
         Request request = new Request.Builder()
                 .url(CURRENT_TRACK_URL)
                 .addHeader("Authorization", "Bearer " + accessToken)
@@ -54,7 +54,7 @@ public class SpotifyPlayerService {
                 albumCoverUrl = imagesNode.get(0).path("url").asText(null);
             }
 
-            return new TrackInfo(trackName, artistName, albumCoverUrl);
+            return new SpotifyTrackInfo(trackName, artistName, albumCoverUrl);
         }
     }
 
