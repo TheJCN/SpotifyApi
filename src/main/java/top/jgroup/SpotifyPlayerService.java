@@ -30,7 +30,6 @@ public class SpotifyPlayerService {
                 throw new IOException("Failed to get current track: " + response);
             }
             String responseBody = response.body().string();
-            System.out.println("Response from Spotify: " + responseBody);
             JsonNode rootNode = objectMapper.readTree(responseBody);
 
             JsonNode itemNode = rootNode.path("item");
